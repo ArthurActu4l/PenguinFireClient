@@ -67,5 +67,15 @@ public class ClientSend : MonoBehaviour
         }
     }
     
+    public static void SendGunSoundEffects(int gunId, int soundEffectID)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.gunSounds))
+        {
+            _packet.Write(gunId);
+            _packet.Write(soundEffectID);
+
+            SendUDPData(_packet);
+        }
+    }
     #endregion
 }

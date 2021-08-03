@@ -27,6 +27,7 @@ public class WeaponHolder : MonoBehaviour
         int previousSelectedWeapon = selectedWeapon;
         //transform.position = mainCamera.position;
         transform.rotation = Quaternion.Lerp(transform.rotation, mainCamera.rotation, smoothTime * Time.smoothDeltaTime);
+        //transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0f, 0.86f, 0f), 20f * Time.smoothDeltaTime);
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {

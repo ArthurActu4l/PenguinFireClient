@@ -78,6 +78,7 @@ public class RigidBodyPlayerMovement : MonoBehaviour
         IncreaseBulletSpread();
         ClientSend.PlayerMovement(transform.position, transform.rotation, playerCam.transform.localRotation);
         playerBody.localScale = Vector3.Lerp(playerBody.localScale, refCrouchScale, 10f * Time.smoothDeltaTime);
+        WeaponHolder.instance.transform.localPosition = Vector3.Lerp(WeaponHolder.instance.transform.localPosition, new Vector3(0f, 0.86f, 0f), 10f * Time.smoothDeltaTime);
     }
 
     /// <summary>
@@ -178,6 +179,10 @@ public class RigidBodyPlayerMovement : MonoBehaviour
         }
     }
 
+    private void WeaopnBobbing()
+    {
+        WeaponHolder.instance.transform.localPosition = Vector3.Lerp(WeaponHolder.instance.transform.localPosition, new Vector3((Mathf.Sin(Time.time * 5f) * 0.07f), 0.86f + (Mathf.Sin(Time.time * 5f) * 0.1f), 0f), 5f * Time.smoothDeltaTime);
+    }
     private void ResetJump()
     {
         readyToJump = true;
@@ -316,6 +321,7 @@ public class RigidBodyPlayerMovement : MonoBehaviour
                     for (int i = 0; i < WeaponHolder.instance.gun.Length; i++)
                     {
                         WeaponHolder.instance.gun[i].IncreaseBulletSpread(WeaponHolder.instance.gun[i].movingBulletSpread);
+                        WeaopnBobbing();
                     }
                 }
                 else

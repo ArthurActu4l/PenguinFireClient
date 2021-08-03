@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -11,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     public MeshRenderer model;
     public Transform playerCamera;
     public WeaponSwitchinManager weaponManager;
+    public TextMeshPro nameTag;
 
     public void Initialize(int _id, string _username)
     {
@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
         username = _username;
         health = maxHealth;
     }
-
     public void SetHealth(float _health)
     {
         health = _health;

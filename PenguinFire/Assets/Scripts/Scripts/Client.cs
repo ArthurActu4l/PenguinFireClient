@@ -303,7 +303,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected },
             { (int)ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
             { (int)ServerPackets.weapons, ClientHandle.SelectWeapon },
-            { (int)ServerPackets.gunPositionAndRotation, ClientHandle.GetGunRotationAndPosition }
+            { (int)ServerPackets.gunPositionAndRotation, ClientHandle.GetGunRotationAndPosition },
+            { (int)ServerPackets.gunSounds, ClientHandle.SendGunSounds }
         };
         Debug.Log("Initialized packets.");
     }

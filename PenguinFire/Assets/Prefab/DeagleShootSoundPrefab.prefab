@@ -52,7 +52,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 12.401772
+  MinDistance: 22.745008
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -140,4 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea032048965616a45a32aaef67ab16cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2
+  time: 10

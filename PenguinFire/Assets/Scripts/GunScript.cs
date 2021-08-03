@@ -168,6 +168,7 @@ public class GunScript : MonoBehaviour
         GameObject shootSound = Instantiate(shootSoundEffect, transform.position, Quaternion.identity, RigidBodyPlayerMovement.instance.transform);
         shootSound.GetComponent<AudioSource>().PlayDelayed(0f);
         CameraShaker.Instance.ShakeOnce(2f, 4f, 0.1f, 0.5f);
+        ClientSend.SendGunSoundEffects(transform.GetSiblingIndex(), 0);
     }
 
     public void SetAmmo()
@@ -196,6 +197,7 @@ public class GunScript : MonoBehaviour
     public void ReloadSoundEffect()
     {
         Instantiate(reloadSoundEffect, transform.position, Quaternion.identity, RigidBodyPlayerMovement.instance.transform);
+        ClientSend.SendGunSoundEffects(transform.GetSiblingIndex(), 1);
     }
 
     public void IsShooting()

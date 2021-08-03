@@ -74,4 +74,13 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[_id].weaponManager.guns[gunId].transform.localRotation = rotation;
         GameManager.players[_id].weaponManager.guns[gunId].bone.transform.localRotation = boneRotation;
     }
+
+    public static void SendGunSounds(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        int gunId = _packet.ReadInt();
+        int soundEffectId = _packet.ReadInt();
+
+        GameManager.players[_id].weaponManager.guns[gunId].InstantiateGunEffects(soundEffectId);
+    }
 }

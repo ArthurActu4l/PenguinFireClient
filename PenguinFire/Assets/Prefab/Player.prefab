@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270574783032049804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.834, z: 0}
+  m_LocalPosition: {x: 0, y: 0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4439665523283683632}
@@ -863,6 +863,7 @@ MonoBehaviour:
   model: {fileID: 5189016876648660388}
   playerCamera: {fileID: 4185870059150143696}
   weaponManager: {fileID: 0}
+  nameTagScript: {fileID: 0}
 --- !u!54 &4185870058646052286
 Rigidbody:
   m_ObjectHideFlags: 0
