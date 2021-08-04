@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
+    public static bool isConnected = false;
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
         int _myId = _packet.ReadInt();
 
         Debug.Log($"Message from server: {_msg}");
+        GameManager.instance.Indicator("Connected To Server!");
         Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
 
         // Now that we have the client's id, connect UDP
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        isConnected = true;
     }
 
     public static void SpawnPlayer(Packet _packet)
@@ -82,5 +85,16 @@ public class ClientHandle : MonoBehaviour
         int soundEffectId = _packet.ReadInt();
 
         GameManager.players[_id].weaponManager.guns[gunId].InstantiateGunEffects(soundEffectId);
+    }
+
+    public static void GetBulletHitPoint(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        int gunId = _packet.ReadInt();
+        Vector3 bulletHitPoint = _packet.ReadVector3();
+        float bulletForce = _packet.ReadFloat();
+        Vector3 decalNormal = _packet.ReadVector3();
+
+        GameManager.players[id].weaponManager.guns[gunId].InstantiateBullet(bulletHitPoint, bulletForce, decalNormal);
     }
 }

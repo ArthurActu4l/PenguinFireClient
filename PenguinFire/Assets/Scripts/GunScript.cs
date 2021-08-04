@@ -8,7 +8,6 @@ public class GunScript : MonoBehaviour
     private int currentAmmo;
     private bool isReloading = false;
     private Vector3 offset;
-    public GameObject indicatorPrefab;
     public Transform bone;
     [HideInInspector]
     public bool isShooting = false;
@@ -78,22 +77,21 @@ public class GunScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            GameObject indicator = Instantiate(indicatorPrefab, Vector3.zero, Quaternion.identity, GameManager.instance.firemodePrefabManager.transform);
             if (canChangeFireMode)
             {
                 if (auto)
                 {
-                    indicator.GetComponent<TMPro.TextMeshProUGUI>().text = "Fire Mode Changed To Single";
+                    GameManager.instance.Indicator("Fire Mode Changed To Single");
                 }
                 else
                 {
-                    indicator.GetComponent<TMPro.TextMeshProUGUI>().text = "Fire Mode Changed To Auto";
+                    GameManager.instance.Indicator("Fire Mode Changed To Auto");
                 }
                 auto = !auto;
             }
             else
             {
-                indicator.GetComponent<TMPro.TextMeshProUGUI>().text = "Cannot Change Fire Mode For Current Weapon";
+                GameManager.instance.Indicator("Cannot Change Fire Mode For Current Weapon");
             }
         }
     } 
@@ -153,6 +151,10 @@ public class GunScript : MonoBehaviour
             GameObject bullet = Instantiate(buletPrefab, bulletPos.position, Quaternion.identity);
             bullet.transform.LookAt(hit[i].point);
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletForce);
+
+            //send bulet to server
+            ClientSend.SendBulletHitPoint(hit[i].point, transform.GetSiblingIndex(), bulletForce, hit[i].normal);
+
             bulletScript bulletScript = bullet.GetComponent<bulletScript>();
             bulletScript.decalPosition = hit[i].point;
             bulletScript.decalRotation = Quaternion.LookRotation(hit[i].normal);

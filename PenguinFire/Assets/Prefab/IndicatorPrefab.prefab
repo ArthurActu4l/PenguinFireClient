@@ -70,7 +70,7 @@ MonoBehaviour:
   m_text: Fire Mode Changed to Burst
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f81ce6f5de8e0cd41b900a24a01461c2, type: 2}
-  m_sharedMaterial: {fileID: 1786136581941560928, guid: f81ce6f5de8e0cd41b900a24a01461c2, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 58551bdce15872d4cacb56bbb3b287b3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -646,9 +646,9 @@ MonoBehaviour:
   shotCount: 1
   bulletForce: 1000
   bulletholeDecal:
+  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
   - {fileID: 9191067755611576230, guid: 6494401d45b7dc74d8997542bc37c89b, type: 3}
   - {fileID: 9191067755611576230, guid: ed1129469e048aa4da56529d3bd8ac40, type: 3}
-  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
   shootSoundEffect: {fileID: 8285939119107768854, guid: 88e56396eef83b149820bfc729c32b91, type: 3}
   bulletShell: {fileID: 2301971671138755904, guid: d6c92cd6e8ef1054d86b9a088db67f58, type: 3}
   reloadSoundEffect: {fileID: 8285939119107768854, guid: 1691c28e3130c44469f6fdabf41dd827, type: 3}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 4185870058646052286}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -863,7 +863,7 @@ MonoBehaviour:
   model: {fileID: 5189016876648660388}
   playerCamera: {fileID: 4185870059150143696}
   weaponManager: {fileID: 0}
-  nameTagScript: {fileID: 0}
+  nameTag: {fileID: 0}
 --- !u!54 &4185870058646052286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1691,9 +1691,9 @@ MonoBehaviour:
   shotCount: 5
   bulletForce: 1000
   bulletholeDecal:
+  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
   - {fileID: 9191067755611576230, guid: 6494401d45b7dc74d8997542bc37c89b, type: 3}
   - {fileID: 9191067755611576230, guid: ed1129469e048aa4da56529d3bd8ac40, type: 3}
-  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
   shootSoundEffect: {fileID: 8285939119107768854, guid: 88e56396eef83b149820bfc729c32b91, type: 3}
   bulletShell: {fileID: 2301971671138755904, guid: d6c92cd6e8ef1054d86b9a088db67f58, type: 3}
   reloadSoundEffect: {fileID: 8285939119107768854, guid: 1691c28e3130c44469f6fdabf41dd827, type: 3}

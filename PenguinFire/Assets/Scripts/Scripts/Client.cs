@@ -41,13 +41,16 @@ public class Client : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        GameManager.instance.Indicator("Aplication quit");
         Disconnect(); // Disconnect when the game is closed
     }
 
     /// <summary>Attempts to connect to the server.</summary>
     public void ConnectToServer()
     {
+        ip = UIManager.instance.ipAddress.text;
         InitializeClientData();
+        PlayerPrefs.SetString("IP", ip);
 
         isConnected = true;
         tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
@@ -116,6 +119,7 @@ public class Client : MonoBehaviour
                 int _byteLength = stream.EndRead(_result);
                 if (_byteLength <= 0)
                 {
+                    GameManager.instance.Indicator("bytelength less");
                     instance.Disconnect();
                     return;
                 }
@@ -128,6 +132,7 @@ public class Client : MonoBehaviour
             }
             catch
             {
+                GameManager.instance.Indicator("no call back TCP");
                 Disconnect();
             }
         }
@@ -251,6 +256,8 @@ public class Client : MonoBehaviour
                 if (_data.Length < 4)
                 {
                     instance.Disconnect();
+                    GameManager.instance.Indicator("Data length less");
+
                     return;
                 }
 
@@ -258,6 +265,7 @@ public class Client : MonoBehaviour
             }
             catch
             {
+                GameManager.instance.Indicator("no call back UDP");
                 Disconnect();
             }
         }
@@ -304,7 +312,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
             { (int)ServerPackets.weapons, ClientHandle.SelectWeapon },
             { (int)ServerPackets.gunPositionAndRotation, ClientHandle.GetGunRotationAndPosition },
-            { (int)ServerPackets.gunSounds, ClientHandle.SendGunSounds }
+            { (int)ServerPackets.gunSounds, ClientHandle.SendGunSounds },
+            { (int)ServerPackets.gunBullets, ClientHandle.GetBulletHitPoint }
         };
         Debug.Log("Initialized packets.");
     }
@@ -320,5 +329,11 @@ public class Client : MonoBehaviour
 
             Debug.Log("Disconnected from server.");
         }
+    }
+
+    public static void DisconnectFromServer()
+    {
+        instance.Disconnect();
+        GameManager.instance.Indicator("Intentional");
     }
 }

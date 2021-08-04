@@ -274,6 +274,14 @@ MonoBehaviour:
   audioPrefab:
   - {fileID: 8285939119107768854, guid: 88e56396eef83b149820bfc729c32b91, type: 3}
   - {fileID: 8285939119107768854, guid: 1691c28e3130c44469f6fdabf41dd827, type: 3}
+  bulletPrefab: {fileID: 6133527881154544409, guid: 2fc3520f75c191249b43db0fbae8169f, type: 3}
+  bulletShell: {fileID: 2301971671138755904, guid: d6c92cd6e8ef1054d86b9a088db67f58, type: 3}
+  shellPos: {fileID: 3713260212806568356}
+  bulletPosition: {fileID: 8726187928167215937}
+  bulletholeDecal:
+  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
+  - {fileID: 9191067755611576230, guid: 6494401d45b7dc74d8997542bc37c89b, type: 3}
+  - {fileID: 9191067755611576230, guid: ed1129469e048aa4da56529d3bd8ac40, type: 3}
 --- !u!1 &2228351734556687081
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +628,14 @@ MonoBehaviour:
   audioPrefab:
   - {fileID: 8285939119107768854, guid: 88e56396eef83b149820bfc729c32b91, type: 3}
   - {fileID: 8285939119107768854, guid: 1691c28e3130c44469f6fdabf41dd827, type: 3}
+  bulletPrefab: {fileID: 6133527881154544409, guid: 2fc3520f75c191249b43db0fbae8169f, type: 3}
+  bulletShell: {fileID: 2301971671138755904, guid: d6c92cd6e8ef1054d86b9a088db67f58, type: 3}
+  shellPos: {fileID: 5514577331120591329}
+  bulletPosition: {fileID: 7659197235400338367}
+  bulletholeDecal:
+  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
+  - {fileID: 9191067755611576230, guid: 6494401d45b7dc74d8997542bc37c89b, type: 3}
+  - {fileID: 9191067755611576230, guid: ed1129469e048aa4da56529d3bd8ac40, type: 3}
 --- !u!1 &3846362671590699612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1558,14 @@ MonoBehaviour:
   audioPrefab:
   - {fileID: 8285939119107768854, guid: 88e56396eef83b149820bfc729c32b91, type: 3}
   - {fileID: 8285939119107768854, guid: 1691c28e3130c44469f6fdabf41dd827, type: 3}
+  bulletPrefab: {fileID: 6133527881154544409, guid: 32f5eb60bf5fe95448b1665035a80543, type: 3}
+  bulletShell: {fileID: 2301971671138755904, guid: d6c92cd6e8ef1054d86b9a088db67f58, type: 3}
+  shellPos: {fileID: 4888201982225302337}
+  bulletPosition: {fileID: 2459357915444874986}
+  bulletholeDecal:
+  - {fileID: 9191067755611576230, guid: 5805fa7c1f0775d42a1d4acdc3b575ec, type: 3}
+  - {fileID: 9191067755611576230, guid: 6494401d45b7dc74d8997542bc37c89b, type: 3}
+  - {fileID: 9191067755611576230, guid: ed1129469e048aa4da56529d3bd8ac40, type: 3}
 --- !u!1 &6838991952648033576
 GameObject:
   m_ObjectHideFlags: 0

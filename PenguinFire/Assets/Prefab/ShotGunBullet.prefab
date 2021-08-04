@@ -299,3 +299,4 @@ MonoBehaviour:
   decalPosition: {x: 0, y: 0, z: 0}
   decalRotation: {x: 0, y: 0, z: 0, w: 0}
   destroyTime: 0
+  bulletFlyBy: {fileID: 7574866447976403121, guid: 21625bbde40505c439cf49da0b3e2a7d, type: 3}

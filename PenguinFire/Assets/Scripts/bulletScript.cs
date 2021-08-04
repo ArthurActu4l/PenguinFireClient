@@ -10,6 +10,8 @@ public class bulletScript : MonoBehaviour
     public Quaternion decalRotation;
     private int collisionCount;
     public float destroyTime;
+    public GameObject bulletFlyBy;
+
     private void OnCollisionEnter(Collision collision)
     {
         collisionCount++;

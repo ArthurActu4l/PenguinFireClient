@@ -41,7 +41,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(playerRotation);
             _packet.Write(cameraRotation);
 
-            SendUDPData(_packet);
+            SendTCPData(_packet);
         }
     }
     
@@ -50,7 +50,7 @@ public class ClientSend : MonoBehaviour
         using (Packet _packet = new Packet((int)ClientPackets.weapons))
         {
             _packet.Write(selectedWeapon);
-            SendUDPData(_packet);
+            SendTCPData(_packet);
         }
     }
     
@@ -62,8 +62,8 @@ public class ClientSend : MonoBehaviour
             _packet.Write(gunPosition);
             _packet.Write(gunRotation);
             _packet.Write(boneRotation);
-            
-            SendUDPData(_packet);
+
+            SendTCPData(_packet);
         }
     }
     
@@ -74,7 +74,21 @@ public class ClientSend : MonoBehaviour
             _packet.Write(gunId);
             _packet.Write(soundEffectID);
 
-            SendUDPData(_packet);
+            SendTCPData(_packet);
+        }
+    }
+    
+    
+    public static void SendBulletHitPoint(Vector3 hitPoint, int gunId, float bulletForce, Vector3 decalNormal)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.gunBullets))
+        {
+            _packet.Write(gunId);
+            _packet.Write(hitPoint);
+            _packet.Write(bulletForce);
+            _packet.Write(decalNormal);
+
+            SendTCPData(_packet);
         }
     }
     #endregion

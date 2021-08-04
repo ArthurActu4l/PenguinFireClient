@@ -1,17 +1,20 @@
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject indicatorPrefab;
     public TextMeshProUGUI ammoText;
     public GameObject firemodePrefabManager;
     public bool gameIsPaused = false;
-    public GameObject pauseMenu;
+    public GameObject[] pauseMenu;
     public TMP_Dropdown resolutionDropdown, qualitySettingsDropdown, VsyncDropdown;
     public Slider masterVolumeSlider, frameRateSlider;
     public TextMeshProUGUI frameRateText;
@@ -118,7 +121,10 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        pauseMenu.SetActive(false);
+        for (int i = 0; i < pauseMenu.Length; i++)
+        {
+            pauseMenu[i].SetActive(false);
+        }
     }
 
     void PauseGame()
@@ -126,7 +132,7 @@ public class GameManager : MonoBehaviour
         gameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        pauseMenu.SetActive(true);
+        pauseMenu[0].SetActive(true);
     }
 
     public void SetVolume(float volume)
@@ -201,5 +207,53 @@ public class GameManager : MonoBehaviour
 
         _player.GetComponent<PlayerManager>().Initialize(_id, _username);
         players.Add(_id, _player.GetComponent<PlayerManager>());
+    }
+   
+    public void Indicator(string message)
+    {
+        GameObject indicator = Instantiate(indicatorPrefab, Vector3.zero, Quaternion.identity, GameManager.instance.firemodePrefabManager.transform) as GameObject;
+        indicator.GetComponent<TMPro.TextMeshProUGUI>().text = message;
+    }
+
+    public void StartServerConnectionTimer()
+    {
+        StartCoroutine("StartTimer");
+    }
+
+    IEnumerator StartTimer()
+    {
+        Indicator("Connecting To Server...");
+        yield return new WaitForSecondsRealtime(10f);
+        if (!ClientHandle.isConnected)
+        {
+            Indicator("Failed To Connect To Server!");
+            yield return new WaitForSecondsRealtime(2f);
+            Indicator("Reloading Level...");
+            yield return new WaitForSecondsRealtime(2f);
+            FailedToConnect();
+        }
+    }
+
+    void FailedToConnect()
+    {
+        UIManager.instance.startMenu.SetActive(false);
+        UIManager.instance.usernameField.interactable = false;
+        UIManager.instance.ConnectToServer();
+    }
+
+    public void DisconnectFromServer()
+    {
+        Client.DisconnectFromServer();
+        StartCoroutine("Disconnect");
+    }
+
+    IEnumerator Disconnect()
+    {
+        players.Remove(RigidBodyPlayerMovement.instance.gameObject.GetComponent<PlayerManager>().id);
+        Indicator("DisconnectedFromServer!");
+        yield return new WaitForSecondsRealtime(2f);
+        Indicator("Back To Main Menu");
+        yield return new WaitForSecondsRealtime(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
